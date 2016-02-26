@@ -30,7 +30,7 @@ class openprovider {
     return builder.buildObject(requestObject)
   }
 
-  request (command, params) {
+  request (command, params, callback) {
     const xml = this.command(command, params)
     return new Promise(function (resolve, reject) {
       return request
@@ -40,6 +40,9 @@ class openprovider {
         .send(xml)
         .then(function (response) {
           parser.parseString(response.text, function (error, result) {
+            if (typeof callback === 'function') {
+              callback(error, result)
+            }
             if (error) {
               reject(error)
             }
@@ -47,6 +50,9 @@ class openprovider {
           })
         })
         .catch(function (error) {
+          if (typeof callback === 'function') {
+            callback(error, null)
+          }
           reject(error)
         })
     })
