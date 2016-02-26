@@ -6,6 +6,10 @@ const builder = new xml2js.Builder()
 const parser = new xml2js.Parser()
 
 class openprovider {
+  /**
+   * Initialize request object
+   * @param config
+   */
   constructor (config) {
     this.requestObject = {
       openXML: {
@@ -15,13 +19,18 @@ class openprovider {
       }
     }
 
-    if (typeof config.password !== 'undefined') {
-      this.requestObject.openXML.credentials.password = config.password
-    } else if (typeof config.hash !== 'undefined') {
+    if (typeof config.hash !== 'undefined') {
       this.requestObject.openXML.credentials.hash = config.hash
+    } else if (typeof config.password !== 'undefined') {
+      this.requestObject.openXML.credentials.password = config.password
     }
   }
 
+  /**
+   * Create openprovider xml command
+   * @param command
+   * @param params
+   */
   command (command, params) {
     // Don't mutate the request object.
     let requestObject = Object.assign({}, this.requestObject)
@@ -30,6 +39,12 @@ class openprovider {
     return builder.buildObject(requestObject)
   }
 
+  /**
+   * Request a given openprovider command
+   * @param command
+   * @param params
+   * @param callback
+   */
   request (command, params, callback) {
     const xml = this.command(command, params)
     return new Promise(function (resolve, reject) {
