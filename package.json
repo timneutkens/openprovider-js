@@ -1,6 +1,6 @@
 {
   "name": "openprovider",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Openprovider api client",
   "main": "index.js",
   "keywords": [
@@ -8,6 +8,10 @@
   ],
   "author": "Tim Neutkens",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timneutkens/openprovider-js"
+  },
   "dependencies": {
     "bluebird": "^3.3.1",
     "superagent": "^1.7.2",
