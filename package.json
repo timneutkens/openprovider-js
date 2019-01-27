@@ -12,6 +12,9 @@
     "type": "git",
     "url": "https://github.com/timneutkens/openprovider-js"
   },
+  "scripts": {
+    "op": "node ./run"
+  },
   "dependencies": {
     "bluebird": "^3.3.1",
     "superagent": "^4.1.0",

@@ -10,9 +10,22 @@ Uses es2015 / es6 classes. You might need to use [Babel](https://babeljs.io/) if
 
 ## Usage
 
-`npm install --save openprovider`
+### CLI Usage
+
+`yarn op searchDomainRequest --domainNamePattern %mydomain%`
+
+This is following the pattern:
+`yarn op <api command> --arg1 <arg1_value> --arg2 <arg2_value> --argn <argn_value>`
+
+For all available api commands, see: https://doc.openprovider.eu/index.php/Main_Page
+
+### Usage in code
 
 [Example request code here (examples/example.js)](examples/example.js)
+
+## Install
+
+`yarn add openprovider`
 
 ## License
 MIT
