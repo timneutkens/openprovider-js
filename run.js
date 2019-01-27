@@ -7,7 +7,8 @@ const config = {
   username: process.env.OP_USERNAME,
   // password or hash. If you fill both hash is used.
   password: process.env.OP_PASSWORD,
-  hash: process.env.OP_HASH
+  hash: process.env.OP_HASH,
+  cli: true
 }
 
 // Create new client using hash
@@ -18,24 +19,17 @@ const run = async (command, params) => {
   console.log(`Running '${command}' with params ${JSON.stringify(params)}...`)
   const result = await OpenproviderClient.request(command, params)
 
-  const [
-    {
-      code: [code],
-      desc: [desc],
-      data: [
-        {
-          total: [total],
-          results: [
-            {
-              array: [
-                {item: results}
-              ]
-            }
-          ]
-        }
-      ]
+  const {
+    code: code,
+    desc: desc,
+    data: {
+      total,
+      results: {
+        array:
+          {item: results}
+      }
     }
-  ] = result.openXML.reply
+  } = result.openXML.reply
 
   console.log(`Result desc: '${desc}', code: '${code}' total: '${total}'`)
 

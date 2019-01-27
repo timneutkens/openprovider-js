@@ -24,6 +24,10 @@ class openprovider {
     } else if (typeof config.password !== 'undefined') {
       this.requestObject.openXML.credentials.password = config.password
     }
+
+    if (config.cli) {
+      parser.options.explicitArray = false
+    }
   }
 
   /**
