@@ -20,14 +20,11 @@ const run = async (command, params) => {
   const result = await OpenproviderClient.request(command, params)
 
   const {
-    code: code,
-    desc: desc,
+    code,
+    desc,
     data: {
       total,
-      results: {
-        array:
-          {item: results}
-      }
+      results: { array: { item: results } }
     }
   } = result.openXML.reply
 
